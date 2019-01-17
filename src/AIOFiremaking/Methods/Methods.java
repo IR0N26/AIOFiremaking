@@ -13,12 +13,12 @@ import xobot.script.wrappers.interactive.GameObject;
 import xobot.script.wrappers.interactive.Player;
 
 public class Methods implements MessageListener {
-    private static final Player myPlayer = Players.getMyPlayer();
+    private static Player myPlayer = Players.getMyPlayer();
     public static boolean cantLightFire = false;
     public static boolean hasWalkedToTile = false;
 
     public static void makeFires() {
-        if (hasWalkedToTile) {
+        if (!hasWalkedToTile) {
             walkToAreaTile();
         } else {
             if (myPlayer.getAnimation() == -1 && !myPlayer.isMoving()) {

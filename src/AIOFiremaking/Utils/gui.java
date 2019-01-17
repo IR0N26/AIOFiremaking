@@ -13,35 +13,29 @@ public class gui extends JFrame {
     }
 
     private void startButtonActionPerformed(ActionEvent e) {
-        switch ((String)(Objects.requireNonNull(locationSelector.getSelectedItem()))){
-            case "Donator Zone":
-                Data.selectedArea = "Donator Zone";
-                break;
-            case "Edgeville":
-                Data.selectedArea = "Edgeville";
-                break;
+        String chosen = locationSelector.getSelectedItem().toString();
+        if (chosen.equals("Donator Zone")) {
+            Data.selectedArea = "Donator Zone";
+        } else {
+            Data.selectedArea = "Edgeville";
         }
-        switch ((String) Objects.requireNonNull(logSelector.getSelectedItem())) {
-            case "Logs":
-                Data.logs_ID = 1511;
-                break;
-            case "Oak logs":
+
+        String chosen1 = logSelector.getSelectedItem().toString();
+        if (chosen1.equals("Oak logs")) {
                 Data.logs_ID = 1521;
-                break;
-            case "Willow logs":
+            } else if (chosen1.equals("Willow logs")){
                 Data.logs_ID = 1519;
-                break;
-            case "Maple logs":
+            } else if (chosen1.equals("Maple logs")){
                 Data.logs_ID = 1517;
-                break;
-            case "Yew logs":
+            } else if (chosen1.equals("Yew logs")){
                 Data.logs_ID = 1515;
-                break;
-            case "Magic logs":
+            } else if (chosen1.equals("Magic logs")) {
                 Data.logs_ID = 1513;
-                break;
+            } else {
+                Data.logs_ID = 1511;
         }
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
