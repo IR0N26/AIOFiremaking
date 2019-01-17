@@ -53,11 +53,7 @@ public class Methods {
                 }
             } else {
                 goToDZ();
-                Time.sleep(3000);
-                Walking.walkTo(Data.walkDZtile1);
-                Time.sleep(2000);
-                Walking.walkTo(Data.bankTileDZ);
-                Time.sleep(3000);
+
             }
 
         } else if (Data.selectedArea.equals("Edgeville")) {
@@ -85,6 +81,9 @@ public class Methods {
         hasWalkedToTile = true;
 
     }
+    public Player getPlayer() {
+        return Players.getMyPlayer();
+    }
 
     private static void goToEdge() {
         Packets.sendAction(315, 1, -2, 25654);
@@ -104,13 +103,23 @@ public class Methods {
     }
 
     public static void getLogs() {
-        NPC npc = NPCs.getNearest(494);
+        NPC bank = NPCs.getNearest(494);
 
-        {
-            Packets.sendAction(225, npc.getIndex(), 0, 0);
-            Time.sleep(2500);
+
+        if (bank != null && Data.selectedArea == "Donator Zone") {
+            if (bank.isReachable()) {
+                Packets.sendAction(225, bank.getIndex(), 0, 0);
+                hasWalkedToTile = false;
+                if (bank.getDistance() < 5) {
+                    Time.sleep(() -> Bank.isOpen(), 2500);
+
+
+                }
+
+            }
+        } else {
+            goToDZ();
         }
-
         GameObject booth = GameObjects.getNearest(Data.booth_ID);
         if (booth != null && !Bank.isOpen() && booth.getDistance() < 5 && !myPlayer.isMoving() && booth.isOnScreen()) {
             booth.interact("Use ");

@@ -7,12 +7,14 @@ import java.util.Objects;
 import AIOFiremaking.Data.Data;
 
 public class Gui extends JFrame {
-
+    public static Gui g = new Gui();
+    public static boolean guiWait = true;
     public Gui() {
         initComponents();
     }
 
     private void startButtonActionPerformed(ActionEvent e) {
+
         String chosen = locationSelector.getSelectedItem().toString();
         if (chosen.equals("Donator Zone")) {
             Data.selectedArea = "Donator Zone";
@@ -34,6 +36,8 @@ public class Gui extends JFrame {
             } else {
                 Data.logs_ID = 1511;
         }
+        guiWait = false;
+        g.dispose();
     }
 
 

@@ -13,8 +13,8 @@ public class Data {
     public static String selectedArea = "";
     public static final int[] booth_ID = {2213, 26972, 11758};
 
-    public static final Tile fireTileDZ1 = new Tile(2556, 3885);
-    public static final Tile fireTileDZ2 = new Tile(2556, 3884);
+    public static final Tile fireTileDZ1 = new Tile(2537, 3860);
+    public static final Tile fireTileDZ2 = new Tile(2537, 3859);
     public static final Tile walkDZtile1 = new Tile(2534, 3871);
     public static final Tile walkDZtile2 = new Tile(2537, 3886);
     public static final Tile fireTileEdgeville1 = new Tile(3104, 3486);

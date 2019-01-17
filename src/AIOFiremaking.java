@@ -14,6 +14,7 @@ import xobot.script.util.Timer;
 import AIOFiremaking.Utils.Gui;
 import AIOFiremaking.Data.Data;
 import AIOFiremaking.Utils.PaintUtil;
+import xobot.script.util.Time;
 
 @Manifest(
         authors = {"IR0N" },
@@ -21,6 +22,7 @@ import AIOFiremaking.Utils.PaintUtil;
         description = "Burns logs in Edge or DZ.",
         version = 1.1)
 public class AIOFiremaking extends ActiveScript implements MessageListener, PaintListener {
+
 
 
     public int loop() {
@@ -37,8 +39,9 @@ public class AIOFiremaking extends ActiveScript implements MessageListener, Pain
     }
 
     public boolean onStart() {
-        Gui g = new Gui();
-        g.setVisible(true);
+
+        Gui.g.setVisible(true);
+        while(Gui.guiWait) Time.sleep(500);
         Data.runtime = new Timer(0);
         Data.startTime = new Timer(System.currentTimeMillis());
         Data.startLevel = Skills.FIREMAKING.getCurrentLevel();
