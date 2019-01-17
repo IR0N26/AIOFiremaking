@@ -1,8 +1,6 @@
 package AIOFiremaking.Methods;
 
 import AIOFiremaking.Data.Data;
-import xobot.client.callback.listeners.MessageListener;
-import xobot.client.events.MessageEvent;
 import xobot.script.methods.*;
 import xobot.script.methods.input.KeyBoard;
 import xobot.script.methods.tabs.Inventory;
@@ -10,9 +8,10 @@ import xobot.script.util.Random;
 import xobot.script.util.Time;
 import xobot.script.wrappers.Tile;
 import xobot.script.wrappers.interactive.GameObject;
+import xobot.script.wrappers.interactive.NPC;
 import xobot.script.wrappers.interactive.Player;
 
-public class Methods implements MessageListener {
+public class Methods {
     private static Player myPlayer = Players.getMyPlayer();
     public static boolean cantLightFire = false;
     public static boolean hasWalkedToTile = false;
@@ -31,7 +30,7 @@ public class Methods implements MessageListener {
                 } else if (Inventory.Contains(590)) {
                     Packets.sendAction(447, 590, boxslot, 3214);
                     Packets.sendAction(870, 1519, slot, 3214);
-                    Time.sleep(1000);
+                    Time.sleep(1000,2000);
                 } else {
                     System.out.println("No tinderbox in inventory!");
                     Time.sleep(2000);
@@ -54,6 +53,11 @@ public class Methods implements MessageListener {
                 }
             } else {
                 goToDZ();
+                Time.sleep(3000);
+                Walking.walkTo(Data.walkDZtile1);
+                Time.sleep(2000);
+                Walking.walkTo(Data.bankTileDZ);
+                Time.sleep(3000);
             }
 
         } else if (Data.selectedArea.equals("Edgeville")) {
@@ -100,6 +104,13 @@ public class Methods implements MessageListener {
     }
 
     public static void getLogs() {
+        NPC npc = NPCs.getNearest(494);
+
+        {
+            Packets.sendAction(225, npc.getIndex(), 0, 0);
+            Time.sleep(2500);
+        }
+
         GameObject booth = GameObjects.getNearest(Data.booth_ID);
         if (booth != null && !Bank.isOpen() && booth.getDistance() < 5 && !myPlayer.isMoving() && booth.isOnScreen()) {
             booth.interact("Use ");
@@ -128,11 +139,5 @@ public class Methods implements MessageListener {
         }
 
     }
-    @Override
-    public void MessageRecieved(MessageEvent str) {
-        if (str.getMessage().contains("cannot light")) {
-           hasWalkedToTile = false;
-        }
 
-    }
 }

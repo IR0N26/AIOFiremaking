@@ -6,9 +6,9 @@ import java.awt.event.ActionEvent;
 import java.util.Objects;
 import AIOFiremaking.Data.Data;
 
-public class gui extends JFrame {
+public class Gui extends JFrame {
 
-    public gui() {
+    public Gui() {
         initComponents();
     }
 

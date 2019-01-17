@@ -27,11 +27,19 @@ public class PaintUtil {
         if (FONTMETRICS == null)
             FONTMETRICS = g.getFontMetrics();
 
-        drawGradientText(g, "AIOFiremaking", x, y += 18, Color.GREEN, 0);
+        drawGradientText(g, "AIOFiremaking", x, y += 18, Color.RED, 0);
         drawGradientText(g, Data.runtime.toElapsedString(), x, y += 18, Color.WHITE, -1);
         drawGradientText(
                 g,
-                "XP gained: " + formatNumber(gainedXp) + " /h: " + perHour(gainedXp),
+                "XP gained: " + formatNumber(gainedXp),
+                x,
+                y += 18,
+                Color.WHITE,
+                -1
+        );
+        drawGradientText(
+                g,
+                "XP/hr: "+ perHour(gainedXp),
                 x,
                 y += 18,
                 Color.WHITE,

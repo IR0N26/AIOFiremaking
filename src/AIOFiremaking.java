@@ -4,12 +4,14 @@ import AIOFiremaking.Methods.Methods;
 import java.awt.Graphics;
 
 import xobot.client.callback.listeners.PaintListener;
+import xobot.client.callback.listeners.MessageListener;
+import xobot.client.events.MessageEvent;
 import xobot.script.ActiveScript;
 import xobot.script.Manifest;
 import xobot.script.methods.tabs.Inventory;
 import xobot.script.methods.tabs.Skills;
 import xobot.script.util.Timer;
-import AIOFiremaking.Utils.gui;
+import AIOFiremaking.Utils.Gui;
 import AIOFiremaking.Data.Data;
 import AIOFiremaking.Utils.PaintUtil;
 
@@ -18,7 +20,7 @@ import AIOFiremaking.Utils.PaintUtil;
         name = "IR0N's AIOFiremaker",
         description = "Burns logs in Edge or DZ.",
         version = 1.1)
-public class AIOFiremaking extends ActiveScript implements PaintListener {
+public class AIOFiremaking extends ActiveScript implements MessageListener, PaintListener {
 
 
     public int loop() {
@@ -35,7 +37,7 @@ public class AIOFiremaking extends ActiveScript implements PaintListener {
     }
 
     public boolean onStart() {
-        gui g = new gui();
+        Gui g = new Gui();
         g.setVisible(true);
         Data.runtime = new Timer(0);
         Data.startTime = new Timer(System.currentTimeMillis());
@@ -45,7 +47,13 @@ public class AIOFiremaking extends ActiveScript implements PaintListener {
     }
 
 
+    @Override
+    public void MessageRecieved(MessageEvent str) {
+        if (str.getMessage().contains("cannot light")) {
+            Methods.hasWalkedToTile = false;
+        }
 
+    }
 
 
     @Override
@@ -54,4 +62,5 @@ public class AIOFiremaking extends ActiveScript implements PaintListener {
         }
 
 }
+
 
