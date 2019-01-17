@@ -1,8 +1,13 @@
 package AIOFiremaking.Data;
 
+import xobot.script.util.Timer;
 import xobot.script.wrappers.Tile;
 
 public class Data {
+    public static Timer startTime;
+    public static Timer runtime;
+    public static int startLevel;
+    public static int startXp;
     public static int logs_ID = 0;
     public static String selectedLog = "";
     public static String selectedArea = "";

@@ -1,6 +1,8 @@
 package AIOFiremaking.Methods;
 
 import AIOFiremaking.Data.Data;
+import xobot.client.callback.listeners.MessageListener;
+import xobot.client.events.MessageEvent;
 import xobot.script.methods.*;
 import xobot.script.methods.input.KeyBoard;
 import xobot.script.methods.tabs.Inventory;
@@ -10,7 +12,7 @@ import xobot.script.wrappers.Tile;
 import xobot.script.wrappers.interactive.GameObject;
 import xobot.script.wrappers.interactive.Player;
 
-public class Methods {
+public class Methods implements MessageListener {
     private static final Player myPlayer = Players.getMyPlayer();
     public static boolean cantLightFire = false;
     public static boolean hasWalkedToTile = false;
@@ -126,5 +128,11 @@ public class Methods {
         }
 
     }
+    @Override
+    public void MessageRecieved(MessageEvent str) {
+        if (str.getMessage().contains("cannot light")) {
+           hasWalkedToTile = false;
+        }
 
+    }
 }
