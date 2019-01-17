@@ -20,6 +20,6 @@ public class Data {
     public static final Tile fireTileEdgeville1 = new Tile(3104, 3486);
     public static final Tile fireTileEdgeville2 = new Tile(3104, 3485);
     public static final Tile fireTileEdgeville3 = new Tile(3104, 3484);
-    public static final Tile bankTileDZ = new Tile(2540, 3889);
-    public static final Tile bankTileEdgeville = new Tile(3094, 3491);
+    public static final Tile bankTileDZ = new Tile(2541, 3865);
+    public static final Tile bankTileEdgeville = new Tile(3094,3491);
 }
