@@ -20,7 +20,7 @@ import xobot.script.util.Time;
         authors = {"IR0N" },
         name = "IR0N's AIOFiremaker",
         description = "Burns logs in Edge or DZ.",
-        version = 1.1)
+        version = 1.2)
 public class AIOFiremaking extends ActiveScript implements MessageListener, PaintListener {
 
 

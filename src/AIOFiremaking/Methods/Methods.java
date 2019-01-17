@@ -104,8 +104,6 @@ public class Methods {
 
     public static void getLogs() {
         NPC bank = NPCs.getNearest(494);
-
-
         if (bank != null && Data.selectedArea == "Donator Zone") {
             if (bank.isReachable()) {
                 Packets.sendAction(225, bank.getIndex(), 0, 0);
@@ -118,7 +116,9 @@ public class Methods {
 
             }
         } else {
-            goToDZ();
+            if (Data.selectedArea == "Donator Zone") {
+                goToDZ();
+            }
         }
         GameObject booth = GameObjects.getNearest(Data.booth_ID);
         if (booth != null && !Bank.isOpen() && booth.getDistance() < 5 && !myPlayer.isMoving() && booth.isOnScreen()) {
