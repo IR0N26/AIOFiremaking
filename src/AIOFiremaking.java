@@ -15,6 +15,7 @@ import AIOFiremaking.Utils.Gui;
 import AIOFiremaking.Data.Data;
 import AIOFiremaking.Utils.PaintUtil;
 import xobot.script.util.Time;
+import AIOFiremaking.Methods.Banking;
 
 @Manifest(
         authors = {"IR0N" },
@@ -26,15 +27,16 @@ public class AIOFiremaking extends ActiveScript implements MessageListener, Pain
 
 
     public int loop() {
-        if (Inventory.Contains(Data.logs_ID) && !Methods.cantLightFire) {
-            Methods.makeFires();
-        } else if (!Methods.cantLightFire && !Inventory.Contains(Data.logs_ID)) {
-            Methods.getLogs();
-        } else if (Methods.cantLightFire) {
-            Methods.walkToAreaTile();
-        }
+        if (Banking.needBank())
+            Banking.doBank();
 
-        return 700;
+        if (Inventory.Contains(Data.logs_ID) && !Methods.cantLightFire)
+            Methods.makeFires();
+        if (Methods.cantLightFire)
+            Methods.walkToAreaTile();
+
+
+        return 750;
 
     }
 
