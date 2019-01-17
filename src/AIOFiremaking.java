@@ -19,7 +19,7 @@ import xobot.script.util.Time;
 @Manifest(
         authors = {"IR0N" },
         name = "IR0N's AIOFiremaker",
-        description = "Burns logs in Edge or DZ.",
+        description = "Burns logs in Edge or DZ. Start with a tinderbox in inventory",
         version = 1.2)
 public class AIOFiremaking extends ActiveScript implements MessageListener, PaintListener {
 
